@@ -1,0 +1,320 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MangaVoid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0a0f24;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #1f3c88;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 🌈 Color cycle */
+        @keyframes colorPulse {
+            0%   { color: #00fa9a; }
+            25%  { color: #00aaff; }
+            50%  { color: #ff4cff; }
+            75%  { color: #ffdd33; }
+            100% { color: #00fa9a; }
+        }
+
+        /* ✨ Glow */
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00fa9a; }
+            to   { text-shadow: 0 0 30px #00fa9a; }
+        }
+
+        /* 📦 Bounce */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-10px); }
+        }
+
+        /* ⚔️ Slash entrance */
+        @keyframes slashIn {
+            0% {
+                opacity: 0;
+                clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+                transform: skewX(-20deg);
+            }
+            60% {
+                opacity: 1;
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                transform: skewX(5deg);
+            }
+            100% {
+                transform: skewX(0deg);
+            }
+        }
+
+        /* 🎇 Particle sparks */
+        @keyframes sparkFloat {
+            from { transform: translateY(0) scale(1); opacity: 1; }
+            to   { transform: translateY(-50px) scale(0); opacity: 0; }
+        }
+
+        /* 🌀 Rotating aura */
+        @keyframes auraSpin {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+
+        /* 💨 Speed lines background */
+        @keyframes speedLines {
+            from { background-position: 0 0; }
+            to   { background-position: 200px 200px; }
+        }
+
+        /* 🎌 Manga black outline */
+        .manga-outline {
+            text-shadow:
+                -3px -3px 0 #000,
+                3px -3px 0 #000,
+                -3px 3px 0 #000,
+                3px 3px 0 #000;
+        }
+
+        /* ✨ APPLY ALL ANIMATIONS TO THE TITLE */
+        header h1 {
+            margin: 0;
+            position: relative;
+            font-weight: bold;
+            font-size: 3rem;
+
+            animation:
+                colorPulse 5s infinite linear,
+                glow 1.5s infinite alternate,
+                bounce 2.5s infinite ease-in-out,
+                slashIn 1.1s ease-out;
+
+            z-index: 5;
+        }
+
+        /* 🔥 Glowing underline */
+        header h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 80%;
+            height: 4px;
+            background: #00fa9a;
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px #00fa9a;
+            border-radius: 2px;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        /* 🌀 Aura behind the text */
+        .aura {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(0,255,150,0.25), transparent);
+            animation: auraSpin 12s linear infinite;
+            filter: blur(10px);
+            z-index: 1;
+        }
+
+        /* 💨 Speed lines overlay */
+        .speed-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(
+                135deg,
+                rgba(255,255,255,0.05) 0px,
+                rgba(255,255,255,0.05) 4px,
+                transparent 4px,
+                transparent 12px
+            );
+            opacity: 0.3;
+            animation: speedLines 3s linear infinite;
+        }
+
+        /* 🎇 Random sparks */
+        .spark {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #00fa9a;
+            border-radius: 50%;
+            animation: sparkFloat 1.5s infinite ease-out;
+        }
+
+        /* Nav and other styles remain unchanged */
+        nav {
+            background: #162447;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #00aaff;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .character-card {
+            background: #1b1b2f;
+            border: 1px solid #252a34;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .link-btn {
+            background: #00aaff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .link-btn:hover {
+            background: #0088cc;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #1f3c88;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <!-- Background effects -->
+    <div class="speed-lines"></div>
+    <div class="aura"></div>
+
+    <!-- Particle sparks -->
+    <div class="spark" style="top: 60%; left: 42%; animation-delay: 0s;"></div>
+    <div class="spark" style="top: 40%; left: 58%; animation-delay: 0.3s;"></div>
+    <div class="spark" style="top: 50%; left: 50%; animation-delay: 0.6s;"></div>
+    <div class="spark" style="top: 65%; left: 55%; animation-delay: 0.9s;"></div>
+
+    <!-- Only one visible title -->
+    <h1 class="manga-outline">MangaVoid</h1>
+</header>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#characters">Creators</a>
+    <a href="#story">Story</a>
+    <a href="#Mangas">Mangas</a>
+    <a href="#comments">Comments</a>
+    <a href="#help">Help</a>
+</nav>
+
+<div class="container">
+
+    <section id="about">
+        <h2><span style="color: #00fa9a;">About MangaVoid</span></h2>
+        <p>
+            <strong>MangaVoid</strong> is a free website made for people such as yourself to read about popular mangas and share comments about them and their characters.
+        </p>
+    </section>
+
+    <section id="characters">
+        <h2><span style="color: #00fa9a;">Creators</span></h2>
+
+        <div class="character-card">
+            <h3>ShadowDribbleX</h3>
+            <p>The original creator of this website. He loves mangas, videogames and football.</p>
+        </div>
+    </section>
+
+    <section id="story">
+        <h2><span style="color: #00fa9a;">The Story</span></h2>
+        <div class="character-card">
+            <p>
+               When ShadowDribbleX was in high school, he started to focus on what he wanted to be when he grew up. First it was a career in Computer Science, then it was Energy Engineer. In the end he opted for Energy Engineer. To train himself, he went ahead of his class and started to create the website that is before you, with a very small understanding of coding.
+            </p>
+        </div>
+    </section>
+    
+    <section id="Mangas">
+        <h2><span style="color: #00fa9a;">Mangas</span></h2>
+        
+        <div class="character-card">
+            <h3>Mangas:</h3>
+            <a href="Manga Page.html" class="link-btn">Click Me</a>
+        </div>
+
+    <section id="comments">
+        <h2><span style="color: #00fa9a;">Comments</span></h2>
+
+        <div id="disqus_thread"></div>
+
+        <script>
+            var disqus_config = function () {
+                this.page.url = window.location.href;  
+                this.page.identifier = document.title; 
+            };
+
+            (function() {
+                var d = document, s = d.createElement('script');
+                s.src = 'https://mangavoid.disqus.com/embed.js';  
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </section>
+    </div>
+    
+    </section>
+
+    <section id="help">
+        <h2><span style="color: #00fa9a;">Help:</span></h2>
+        
+        <div class="character-card">
+            <h3>Need Help or Have Problems?</h3>
+            <a href="Index.html" class="link-btn">Click Me</a>
+        </div>
+    </section>
+
+
+<footer>
+    <p>MangaVoid · Created by ShadowDribbleX</p>
+</footer>
+
+</body>
+</html>
+

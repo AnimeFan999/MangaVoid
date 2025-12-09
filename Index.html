@@ -1,0 +1,139 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0a0f24;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #1f3c88;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #ffffff;
+        }
+
+        nav {
+            background: #162447;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #00aaff;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .character-card {
+            background: #1b1b2f;
+            border: 1px solid #252a34;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Button styling */
+        .link-btn {
+            background: #00aaff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .link-btn:hover {
+            background: #0088cc;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #1f3c88;strong
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Help Section</h1>
+</header>
+
+<nav>
+    <a href="#help">Help</a>
+    <a href="#go back">Go Back</a>
+
+</nav>
+
+
+    <section id="help">
+        <h2><span style="color: #00fa9a;">Help:</span></h2>
+        
+        <div class="character-card">
+            <h3>On this website you can post all the problems and <strong><u>only</u></strong> the problems that you encounter on <strong>MangaVoid</strong> in thecomment section below <span style="color: #FF0000;">🡻</span>.</h3>
+        </div>
+    </section>
+    <section id="comments">
+        <h2><span style="color: #00fa9a;">Comments</span></h2>
+
+        <div id="disqus_thread"></div>
+
+        <script>
+            var disqus_config = function () {
+                this.page.url = window.location.href;  
+                this.page.identifier = document.title; 
+            };
+
+            (function() {
+                var d = document, s = d.createElement('script');
+                s.src = 'https://mangavoid.disqus.com/embed.js';  
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </section>
+    
+    <section id="go back">
+           <h2><span style="color: #00fa9a;"><u>Go Back:</u></span></h2>
+            <div class="character-card">
+            <p>Click here to go back to the main page:</p>
+    <a href="index.html" class="link-btn">Click Me</a>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>MangaVoid · Created by ShadowDribbleX</p>
+</footer>
+
+</body>
+</html>
